@@ -9,7 +9,7 @@ parameters:
   customRulePath: ''
   excludeRules: ["PSShouldProcess", "PSUseShouldProcessForStateChangingFunctions", "PSAvoidUsingWriteHost"]
   pool:
-    vmImage: 'windows-2019'
+    name: 'PowerShellModules'
 
 jobs:
   - job: ScriptAnalyzer

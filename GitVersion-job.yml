@@ -1,7 +1,7 @@
 parameters:
   # It seems that currently, the gitversion task isn't working elsewhere
   pool:
-    vmImage: 'windows-2019'
+    name: 'PowerShellModules'
 
 jobs:
   - job: Initialize
