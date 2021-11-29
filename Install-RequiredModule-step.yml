@@ -3,7 +3,7 @@ parameters:
 
 steps:
 
-- powershell: |
+- pwsh: |
     $ModulePath = Join-Path (Split-Path $Profile.CurrentUserAllHosts) Modules
     $null = New-Item $ModulePath -Force -Type Directory
     Write-Host "##vso[task.setvariable variable=ModuleInstallPath]$ModulePath"
@@ -18,7 +18,7 @@ steps:
     includeNuGetOrg: false
     restoreDirectory: $(ModuleInstallPath)
 
-- powershell: |
+- pwsh: |
     if (Test-Path packages.config) {
         # Strip the version numbers from the path names:
         [xml]$packages = Get-Content packages.config
@@ -30,7 +30,7 @@ steps:
     }
   displayName: 'Fixup Nuget Module Install'
 
-- powershell: |
+- pwsh: |
     # Apparently, Install-Script isn't good enough except on Windows?
     # Install-Script Install-RequiredModule -Force -Verbose
     Save-Script Install-RequiredModule -Path '$(Pipeline.Workspace)'

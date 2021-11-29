@@ -9,7 +9,7 @@ parameters:
   show: 'All'
 
 steps:
-- powershell: |
+- pwsh: |
     Import-Module Pester -Passthru
 
     $Options = @{
@@ -51,7 +51,7 @@ steps:
     Invoke-Pester @Options
   displayName: Invoke-Pester
 
-- powershell: |
+- pwsh: |
     #normalize source dir for code coverage
     $sourceDirs = (@(Get-ChildItem ${{ parameters.codeCoverageDirectory }} -Directory -Recurse | Convert-Path) + "${{ parameters.codeCoverageDirectory }}") -join ";"
     Write-Host "INFO [task.setvariable variable=CodeCoverageRecurseDirectories]$sourceDirs"

@@ -4,7 +4,7 @@ parameters:
   semVer: $[dependencies.GitVersion.outputs['GitVersion.NuGetVersion']]
 
 steps:
-- powershell: |
+- pwsh: |
     Write-Host "Using PSModulePath: $($Env:PSModulePath)"
     foreach ($BuildManifest in Get-ChildItem "${{ parameters.sourcePath }}") {
         # Build-Module currently doesn't guarantee the module name will be in the output

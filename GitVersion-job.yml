@@ -13,7 +13,7 @@ jobs:
 
     - template: GitVersion-step.yml
 
-    - powershell: |
+    - pwsh: |
         @{
             Counter          = '$(GitVersion.MajorMinorPatch)'
             SafeBranchName   = '$(GitVersion.BranchName)' -replace '[\\/]','-'
@@ -41,7 +41,7 @@ jobs:
 
     - template: GitVersion-step.yml
 
-    - powershell: |
+    - pwsh: |
         foreach ($envar in Get-Item ENV:GITVERSION_*) {
           Write-Host "INFO [task.setvariable variable=$(($envar.Name -split "_",2)[1]);isOutput=true]$($envar.Value)"
           Write-Host "##vso[task.setvariable variable=$(($envar.Name -split "_",2)[1]);isOutput=true]$($envar.Value)"

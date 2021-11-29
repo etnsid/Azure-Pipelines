@@ -45,7 +45,7 @@ jobs:
         artifactName: ${{ parameters.artifactName }}
         downloadPath: ${{ parameters.artifactDownloadDirectory }}
 
-    - powershell: |
+    - pwsh: |
         $AdditionalModulePaths = @(if("${{ parameters.artifactName }}"){"${{ parameters.artifactDownloadDirectory }}"}) +
             @("${{ join('", "', parameters.additionalModulePaths) }}") -join [IO.Path]::PathSeparator
         Write-Host "##vso[task.setvariable variable=AdditionalModulePaths]$AdditionalModulePaths"

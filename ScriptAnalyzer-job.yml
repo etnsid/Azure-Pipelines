@@ -36,7 +36,7 @@ jobs:
         artifactName: ${{ parameters.artifactName }}
         downloadPath: ${{ parameters.artifactDownloadDirectory }}/$(Build.DefinitionName)
 
-    - powershell: |
+    - pwsh: |
         $Path = (New-Item $Env:TEMP\$(New-Guid)\PSScriptAnalyzer.Tests.ps1 -Type File -Force).FullName
         "##vso[task.setvariable variable=TestPath]$Path"
 

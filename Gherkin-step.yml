@@ -8,7 +8,7 @@ parameters:
   show: 'All'
 
 steps:
-- powershell: |
+- pwsh: |
     Import-Module Pester -Passthru
 
     $Options = @{

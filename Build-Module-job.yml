@@ -25,7 +25,7 @@ jobs:
       persistCredentials: true
 
     # Ensure LFS updates for submodules
-    - powershell: |
+    - pwsh: |
         git config http.https://qmdevteam.visualstudio.com.extraheader="AUTHORIZATION: bearer $(System.AccessToken)"
         git submodule foreach --recursive "ls && git lfs install --local && git lfs pull"
       displayName: 'Fetch Submodule LFS files'
@@ -37,7 +37,7 @@ jobs:
         parameters:
           path: $(Build.SourcesDirectory)/${{ parameters.requiredModulesPath }}
 
-    - powershell: |
+    - pwsh: |
         $VersionPrefix, $VersionSuffix = "$(SemVer)" -split '[-+]', 2
         dotnet build -c Release -p:VersionPrefix=$VersionPrefix -p:VersionSuffix=$VersionSuffix
       displayName: Build Solution
