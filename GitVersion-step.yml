@@ -3,8 +3,9 @@ parameters:
   additionalArguments: ''
 
 steps:
-- task: gittools.gitversion.gitversion-task.GitVersion@5
+- task: gittools.gitversion.gitversion-task.GitVersion@0
   displayName: GitVersion
   inputs:
+    versionSpec: '5.x'
     updateAssemblyInfo: ${{ parameters.updateAssemblyInfo }}
     additionalArguments: ${{ parameters.additionalArguments }}
