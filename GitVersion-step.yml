@@ -3,9 +3,11 @@ parameters:
   additionalArguments: ''
 
 steps:
-- task: gittools.gitversion.gitversion-task.GitVersion@0
-  displayName: GitVersion
+- task: gitversion/setup@0
   inputs:
     versionSpec: '5.x'
-    updateAssemblyInfo: ${{ parameters.updateAssemblyInfo }}
-    additionalArguments: ${{ parameters.additionalArguments }}
+
+- task: gitversion/execute@0
+  inputs:
+    useConfigFile: true
+    configFilePath: 'Gitversion.yml'
